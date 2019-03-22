@@ -86,15 +86,20 @@ first_point = input(
     'Please input your first point as lat,lon\n    ').split(',')
 second_point = input(
     'Please input your second point as lat,lon\n    ').split(',')
-lat_list = [float(first_point[0]), float(second_point[0])]
-lon_list = [float(first_point[1]), float(second_point[1])]
-lat_list.sort()
-lon_list.sort()
+input_lat = [float(first_point[0]), float(second_point[0])]
+input_lon = [float(first_point[1]), float(second_point[1])]
+input_lat.sort()
+input_lon.sort()
 
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
     # within will hold the cities that fall within the specified region
     within = []
+
+    lat_list = [lat1, lat2]
+    lon_list = [lon1, lon2]
+    lat_list.sort()
+    lon_list.sort()
 
     # Ensure that the lat and lon valuse are all floats
     # Go through each city and check to see if it falls within
@@ -103,12 +108,12 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
         if lat_list[0] <= city.lat <= lat_list[1] and lon_list[0] <= city.lon <= lon_list[1]:
             within.append(city)
 
-    for city in within:
-        print(city)
+    # for city in within:
+    #     print(city)
 
     return within
 
 
-print(f"Points used: \n{first_point}\n{second_point}\n")
+# print(f"Points used: \n{first_point}\n{second_point}\n")
 cityreader_stretch(
-    lat_list[0], lat_list[1], lon_list[0], lon_list[1], cities)
+    input_lat[0], input_lat[1], input_lon[0], input_lon[1], cities)
